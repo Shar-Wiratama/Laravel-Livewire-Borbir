@@ -61,6 +61,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script type="text/javascript" src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  
+</script>
+
 <script>
   $(document).ready(function(){
     toastr.options= {

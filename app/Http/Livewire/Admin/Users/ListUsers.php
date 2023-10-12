@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\http\Livewire\Admin\AdminComponent;
 
@@ -20,6 +21,7 @@ class ListUsers extends AdminComponent
     public function addUser()
     {   
         $this->showEditModal = false;
+        
         $this->dispatchBrowserEvent('show-form');
     }
 
@@ -33,7 +35,7 @@ class ListUsers extends AdminComponent
             'password' =>'required|confirmed',
         ])->validate();
 
-        $vaildateData['password'] = bcrypt($validateData['password']);
+        $validateData['password'] = bcrypt($validateData['password']);
 
         User::create($validateData);
 
@@ -63,7 +65,7 @@ class ListUsers extends AdminComponent
         ])->validate();
 
         if(!empty($validateData['password']))
-        $vaildateData['password'] = bcrypt($validateData['password']);
+        $validateData['password'] = bcrypt($validateData['password']);
 
         $this->user->update($validateData);
 
@@ -83,9 +85,11 @@ class ListUsers extends AdminComponent
     {
         $user = User::findOrFail($this->userIdBeingRemoved);
 
-        $user->delete();
+        dd($user);
 
-        $this->dispatchBrowserEvent('hide-delete-modal', ['message'=>'Data User Berhasil Dhapus!']);
+        // $user->delete();
+
+        // $this->dispatchBrowserEvent('hide-delete-modal', ['message'=>'Data User Berhasil Dhapus!']);
     }
 
     public function render()

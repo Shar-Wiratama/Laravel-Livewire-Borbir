@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Users\ListUsers;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Livewire\Admin\Dashboard\AdminDashboardController;
 use App\Http\Livewire\Admin\Pengumuman\ListPengumuman;
+use App\Http\Livewire\Admin\Pencatatan\SelectPencatatan;
+use App\Http\Livewire\Admin\Pengumuman\CreatePengumumanForm;
+use App\Http\Livewire\Admin\Pengumuman\UpdatePengumumanForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
 
-Route::get('admin/users', ListUsers::class)->name('admin.users');
-Route::get('admin/pengumuman', ListPengumuman::class)->name('admin.pengumuman');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('admin/dashboard', AdminDashboardController::class)->name('admin.dashboard');
+
+    Route::get('admin/users', ListUsers::class)->name('admin.users');
+
+    Route::get('admin/pencatatan', SelectPencatatan::class)->name('admin.pencatatan');
+
+    Route::get('admin/pengumuman', ListPengumuman::class)->name('admin.pengumuman');
+    Route::get('admin/pengumuman/create', CreatePengumumanForm::class)->name('admin.pengumuman.create');
+    Route::get('admin/pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('admin.pengumuman.edit');
+});
+
+

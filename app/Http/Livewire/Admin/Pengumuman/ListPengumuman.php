@@ -8,17 +8,28 @@ use App\http\Livewire\Admin\AdminComponent;
 
 class ListPengumuman extends AdminComponent
 {
-    public function addPengumuman()
+    public $pengumumanIdBeingRemoved = null;
+
+    public function confirmPengumumanRemoval($pengumumanId)
     {
-        //
+        $this->pengumumanIdBeingRemoved = $pengumumanId;
+
+        $this->dispatchBrowserEvent('show-delete-confirmation');
     }
-    public function createPengumuman()
+
+    public function deletePengumuman()
     {
-        //
+        $Pengumuman = Pengumuman::findOrFail($this->PengumumanIdBeingRemoved);
+
+        $Pengumuman->delete();
+
+        $this->dispatchBrowserEvent('deleted', ['message' => 'Pengumuman deleted successfully!']);
     }
 
     public function render()
     {
-        return view('livewire.admin.pengumuman.list-pengumuman');
+        $pengumuman = Pengumuman::latest()->paginate(3);
+
+        return view('livewire.admin.pengumuman.list-pengumuman',['pengumuman'=>$pengumuman]);
     }
 }
