@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Borbir</span>
     </a>
 
     <!-- Sidebar -->
@@ -46,6 +46,20 @@
             </a>
           </li>
 
+           <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+            <a href="{{route('anggota.pencatatan.create')}}" class="nav-link {{request()->is('anggota/pencatatan/create')?'active' : ''}}">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Buat Pencatatan
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
           <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -54,7 +68,7 @@
             <a href="{{route('admin.pencatatan')}}" class="nav-link {{request()->is('admin/pencatatan')?'active' : ''}}">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Pencatatan
+                Pilih Pencatatan
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -69,6 +83,20 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Pengumuman
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
+          <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+            <a href="{{route('anggota.pengumuman.view')}}" class="nav-link {{request()->is('anggota/pengumuman/view')?'active' : ''}}">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                List Pengumuman
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

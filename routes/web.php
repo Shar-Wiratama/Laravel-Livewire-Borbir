@@ -1,12 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Livewire\Admin\Users\ListUsers;
-use App\Http\Livewire\Admin\Dashboard\AdminDashboardController;
 use App\Http\Livewire\Admin\Pengumuman\ListPengumuman;
 use App\Http\Livewire\Admin\Pencatatan\SelectPencatatan;
 use App\Http\Livewire\Admin\Pengumuman\CreatePengumumanForm;
 use App\Http\Livewire\Admin\Pengumuman\UpdatePengumumanForm;
+use App\Http\Livewire\Admin\Dashboard\AdminDashboardController;
+
+use App\Http\Livewire\Anggota\Pengumuman\ViewPengumuman;
+use App\Http\Livewire\Anggota\Pencatatan\CreatePencatatan;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +29,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('admin/dashboard', AdminDashboardController::class)->name('admin.dashboard');
+Route::group([
+    'middleware' => 'auth',
+], function(){
+    Route::group(['middleware' =>['admin']],function(){
+        Route::get('dashboard', AdminDashboardController::class)->name('dashboard');
 
-    Route::get('admin/users', ListUsers::class)->name('admin.users');
+        Route::get('users', ListUsers::class)->name('users');
 
-    Route::get('admin/pencatatan', SelectPencatatan::class)->name('admin.pencatatan');
+        Route::get('pencatatan', SelectPencatatan::class)->name('pencatatan');
 
-    Route::get('admin/pengumuman', ListPengumuman::class)->name('admin.pengumuman');
-    Route::get('admin/pengumuman/create', CreatePengumumanForm::class)->name('admin.pengumuman.create');
-    Route::get('admin/pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('admin.pengumuman.edit');
+        Route::get('pengumuman', ListPengumuman::class)->name('pengumuman');
+        Route::get('pengumuman/create', CreatePengumumanForm::class)->name('pengumuman.create');
+        Route::get('pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('pengumuman.edit');
+    });
+
+    Route::group(['middleware' =>['anggota']],function(){
+        Route::get('pengumuman/view', ViewPengumuman::class)->name('pengumuman.view');
+
+        Route::get('pencatatan/create', CreatePencatatan::class)->name('pencatatan.create');
+    });
 });
+
+
+
+    
+
+
 
 

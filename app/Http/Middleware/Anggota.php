@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class Administrator
+class Anggota
 {
     /**
      * Handle an incoming request.
@@ -16,6 +17,13 @@ class Administrator
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Auth::check()) {
+            return redirect()->route('login');
+        }
+        if(Auth::user()->role_id == 2) {
+            return $next($request);
+        }
+
+        abort(403);
     }
 }

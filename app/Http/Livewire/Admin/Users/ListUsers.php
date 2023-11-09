@@ -18,6 +18,10 @@ class ListUsers extends AdminComponent
 
     public $userIdBeingRemoved = null;
 
+    public $searchTerm = null;
+
+    public $query;
+
     public function addUser()
     {   
         $this->showEditModal = false;
@@ -84,17 +88,20 @@ class ListUsers extends AdminComponent
     public function deleteUser()
     {
         $user = User::findOrFail($this->userIdBeingRemoved);
+        
+        // dd($user);
+        $user->delete();   
 
-        dd($user);
-
-        // $user->delete();
-
-        // $this->dispatchBrowserEvent('hide-delete-modal', ['message'=>'Data User Berhasil Dhapus!']);
+        $this->dispatchBrowserEvent('hide-delete-modal', ['message'=>'Data User Berhasil Dhapus!']);
     }
 
     public function render()
     {
-        $users = User::latest()->paginate(3);
+        $users = User::query()
+                ->where('name', 'like', '%'.$this->searchTerm.'%')
+                ->orWhere('email', 'like', '%'.$this->searchTerm.'%')
+                ->orWhere('address', 'like', '%'.$this->searchTerm.'%')
+                ->latest()->paginate(3);
 
         return view('livewire.admin.users.list-users',['users'=>$users]);
     }

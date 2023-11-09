@@ -1,6 +1,7 @@
 
 <div>
 <div>
+<div>
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -22,10 +23,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <div class="d-flex justify-content-end mb-3">
+            <div class="d-flex justify-content-between mb-3">
                 <button type="button" wire:click.prevent="addUser" class="btn btn-primary"><i class="fa fa-plus circle mr-1"></i>
                 Tambah Anggota
                 </button>
+                <div>
+                  <input wire:model="searchTerm" type="text" class="form -control" placeholder="Search">
+                </div>
             </div>    
 
             <div class="card">
@@ -44,7 +48,7 @@
                     </thead>
                     <tbody>
 
-                    @foreach($users as $user)
+                    @forelse($users as $user)
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{ $user->name}}</td>
@@ -61,7 +65,11 @@
                         </a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr class="text-center">
+                      <td colspan="5">No Result Found</td>
+                    </tr>
+                    @endforelse
 
                     </tbody>
                 </table>
@@ -166,19 +174,20 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Delete User</h5>
+                    <h5>Hapus User</h5>
                 </div>
 
                 <div class="modal-body">
-                    <h4>Are you sure you want to delete this user?</h4>
+                    <h4>Anda yakin menghapus user ini?</h4>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancel</button>
-                    <button type="button" wire:click.prevent="deleteUser" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Delete User</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Batalkan</button>
+                    <button type="button" wire:click.prevent="deleteUser" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus User</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 

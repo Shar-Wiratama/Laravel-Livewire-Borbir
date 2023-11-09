@@ -8,10 +8,13 @@ use App\http\Livewire\Admin\AdminComponent;
 
 class ListPengumuman extends AdminComponent
 {
+    protected $listeners = ['deleteConfirmed' => 'deletePengumuman'];
+
     public $pengumumanIdBeingRemoved = null;
 
     public function confirmPengumumanRemoval($pengumumanId)
     {
+        // dd($pengumumanId);
         $this->pengumumanIdBeingRemoved = $pengumumanId;
 
         $this->dispatchBrowserEvent('show-delete-confirmation');
@@ -19,11 +22,12 @@ class ListPengumuman extends AdminComponent
 
     public function deletePengumuman()
     {
-        $Pengumuman = Pengumuman::findOrFail($this->PengumumanIdBeingRemoved);
+        // dd('here');
+        $pengumuman = Pengumuman::findOrFail($this->pengumumanIdBeingRemoved);
 
-        $Pengumuman->delete();
+        $pengumuman->delete();
 
-        $this->dispatchBrowserEvent('deleted', ['message' => 'Pengumuman deleted successfully!']);
+        $this->dispatchBrowserEvent('deleted', ['message' => "Pengumuman Berhasil Dihapus!"]);
     }
 
     public function render()

@@ -1,6 +1,7 @@
 
 <div>
 <div>
+<div>
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -60,19 +61,12 @@
                         </td>
                     </tr>
                     @endforeach
-
-
                     </tbody>
                 </table>
               </div>
-              <div class="card-footer d-flex justify-content-end">
-                 
+              <div class="card-footer d-flex justify-content-end">   
               </div>
-            </div>
-          
-
-
-            
+            </div>            
           </div>
           <!-- /.col-md-6 -->
         </div>
@@ -80,9 +74,9 @@
       </div><!-- /.container-fluid -->
     </div>
 
-    
+    <x-confirmation-alert />
 
- 
-
+</div>
+</div>
 </div>
 

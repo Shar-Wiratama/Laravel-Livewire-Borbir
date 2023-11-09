@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -61,10 +61,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script type="text/javascript" src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-  
+  window.addEventListener('show-delete-confirmation', 
+  event=>{
+    Swal.fire({
+    title: 'Apakah kamu yakin?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Livewire.emit('deleteConfirmed')
+      }
+    })
+  })
+
+  window.addEventListener('deleted', event =>{
+     Swal.fire(
+      'Deleted!',
+      event.detail.message,
+      'Success'
+     )
+  })
 </script>
 
 <script>
@@ -94,8 +117,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $('#confirmationModal').modal('hide');
     toastr.success(event.detail.message, 'Success!');
   })
+</script>
 
-  
+<script>
+  window.addEventListener('show-pencatatan-form', event => {
+    $('#form').modal('show');
+  })
+
+  window.addEventListener('hide-pencatatan-form', event => {
+    $('#form').modal('hide');
+    toastr.success(event.detail.message, 'Berhasil!');
+  })
 </script>
 
 <livewire:scripts />
