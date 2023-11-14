@@ -55,7 +55,7 @@
                         <td>{{ $user->address}}</td>
                         <td>{{ $user->email}}</td>
                         <td>Anggota</td>
-                        <td>10/01/2023</td>
+                        <td>{{ $user->created_at}}</td>
                         <td>
                         <a href="" wire:click.prevent="edit({{$user}})">
                             <i class="fa fa-edit"></i>

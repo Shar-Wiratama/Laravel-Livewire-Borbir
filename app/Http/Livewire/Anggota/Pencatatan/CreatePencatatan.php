@@ -29,20 +29,22 @@ class CreatePencatatan extends Component
     public function makePencatatan()
     {
         $validateData = Validator::make($this->state,[
-            // 'user_id' => 'requied',
-            'updated_meter' =>'required',   
-        ])->validate();
+            'user_id'=>'required',
+            'updated_meter' =>'required', 
+        ],
+        )->validate();
 
-        // if ($this->photo) {
-        //     $validatedData['photo'] = $this->photo->store('/', 'foto_meteran');
-        // }
+        if ($this->photo) {
+            $validateData['photo'] = $this->photo->store('/', 'foto_meteran');
+        }
 
+        // dd($validateData);
         Pencatatan::create($validateData);
-        dd($validateData);
+        // dd('here');
 
-        // $this->dispatchBrowserEvent('hide-pencatatan-form', ['message'=>'Data User Berhasil Dibuat!']);
+        $this->dispatchBrowserEvent('hide-pencatatan-form', ['message'=>'Data User Berhasil Dibuat!']);
 
-        // return redirect()->back();
+        return redirect()->back();
     }
     public function render()
     {

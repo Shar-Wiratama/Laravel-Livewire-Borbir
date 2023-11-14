@@ -19,18 +19,6 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -40,11 +28,23 @@
             <a href="{{route('admin.dashboard')}}" class="nav-link {{request()->is('admin/dashboard')?'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
-                <span class="right badge badge-danger">New</span>
+                Admin Dashboard
               </p>
             </a>
           </li>
+
+          {{-- <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+                   <li class="nav-item">
+                <a href="{{route('anggotaDashboard')}}" class="nav-link {{request()->is('anggotaDashboard')?'active' : ''}}">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Anggota Dashboard
+                  </p>
+                </a>
+              </li> --}}
 
            <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -55,7 +55,6 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Buat Pencatatan
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -69,7 +68,6 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Pilih Pencatatan
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -83,7 +81,6 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Pengumuman
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -97,7 +94,6 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 List Pengumuman
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -111,17 +107,15 @@
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 User
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-gears-alt"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Pengaturan
-                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>

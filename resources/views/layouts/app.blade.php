@@ -123,10 +123,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
   window.addEventListener('show-pencatatan-form', event => {
     $('#form').modal('show');
   })
+</script>
 
-  window.addEventListener('hide-pencatatan-form', event => {
+<script>
+  $(document).ready(function(){
+    toastr.options= {
+      "positionClass": "toast-bottom-right",
+      "progressBar": true,
+    }
+
+    window.addEventListener('hide-pencatatan-form', event => {
     $('#form').modal('hide');
     toastr.success(event.detail.message, 'Berhasil!');
+  })
+  })
+</script>
+
+<script>
+  // Function to set selected data in the modal
+  // function setModalData(selectedData) {
+  //       $('#pengumumanBody').html('<p>' + selectedData + '</p>');
+  //   }
+
+  window.addEventListener('show-pengumuman-modal', event => {
+    $('#confirmationModal').modal('show');
   })
 </script>
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Pengumuman;
 
-use Livewire\Component;
+
 use App\Models\Pengumuman;
 use App\http\Livewire\Admin\AdminComponent;
 
@@ -11,6 +11,8 @@ class ListPengumuman extends AdminComponent
     protected $listeners = ['deleteConfirmed' => 'deletePengumuman'];
 
     public $pengumumanIdBeingRemoved = null;
+
+    public $query;
 
     public function confirmPengumumanRemoval($pengumumanId)
     {
@@ -32,8 +34,8 @@ class ListPengumuman extends AdminComponent
 
     public function render()
     {
-        $pengumuman = Pengumuman::latest()->paginate(3);
+        $pengumumans = Pengumuman::latest()->paginate(5);
 
-        return view('livewire.admin.pengumuman.list-pengumuman',['pengumuman'=>$pengumuman]);
+        return view('livewire.admin.pengumuman.list-pengumuman',['pengumumans'=>$pengumumans]);
     }
 }

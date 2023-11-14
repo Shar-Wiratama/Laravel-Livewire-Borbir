@@ -29,12 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::group([
-    'middleware' => 'auth',
-], function(){
-    Route::group(['middleware' =>['admin']],function(){
+Route::group(['middleware' => ['auth','admin']], function(){
         Route::get('dashboard', AdminDashboardController::class)->name('dashboard');
 
         Route::get('users', ListUsers::class)->name('users');
@@ -44,13 +39,13 @@ Route::group([
         Route::get('pengumuman', ListPengumuman::class)->name('pengumuman');
         Route::get('pengumuman/create', CreatePengumumanForm::class)->name('pengumuman.create');
         Route::get('pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('pengumuman.edit');
-    });
 
-    Route::group(['middleware' =>['anggota']],function(){
+    
+        // Route::get('anggotaDashboard', AnggotaDashboardController::class)->name('anggotaDashboard');
+
         Route::get('pengumuman/view', ViewPengumuman::class)->name('pengumuman.view');
 
         Route::get('pencatatan/create', CreatePencatatan::class)->name('pencatatan.create');
-    });
 });
 
 
@@ -60,3 +55,7 @@ Route::group([
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

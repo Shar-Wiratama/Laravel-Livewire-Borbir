@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
 
-                    @foreach($pengumuman as $pengumuman)
+                    @foreach($pengumumans as $pengumuman)
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$pengumuman->title}}</td>
@@ -65,6 +65,7 @@
                 </table>
               </div>
               <div class="card-footer d-flex justify-content-end">   
+                {{ $pengumumans->links() }}
               </div>
             </div>            
           </div>

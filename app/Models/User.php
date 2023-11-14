@@ -55,9 +55,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function isAdmin(){
-    //     return false;
-    // } 
+    public function PencatatanRecords()
+    {
+        return $this->hasMany(Pencatatan::class, 'user_id', 'id');
+    }
+
+    public function isAdmin(){
+        return false;
+    } 
 
     // protected function type(): Attribute
     // {
@@ -66,8 +71,19 @@ class User extends Authenticatable
     //     );
     // }
 
-    public function role()
-	{
-		return $this->belongsTo(RoleUser::class, 'role_id');
-	}
+    // public function getAvatarUrlAttribute()
+    // {
+    //     if ($this->photo && Storage::disk('avatars')->exists($this->avatar)) {
+    //         return Storage::disk('avatars')->url($this->avatar);
+    //     }
+
+    //     return asset('noimage.png');
+    // }
+
+    // public function role(): Attribute
+	// {
+	// 	return new Attribute(
+    //         get: fn($value) =>["admin", "anggota"][$value],
+    //     );
+	// }
 }

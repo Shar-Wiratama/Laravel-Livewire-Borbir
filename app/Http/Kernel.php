@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,7 +64,12 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'user-role' => \App\Http\Middleware\UserRoleMiddleware::class,
         'admin' => \App\Http\Middleware\Admin::class,
-        'anggota' => \App\Http\Middleware\Anggota::class,
     ];
+
+    // protected function schedule(Schedule $schedule)
+    // {
+    //     $schedule->call('App\Http\Controllers\Livewire\Anggota\CreatePencatatan')->daily();
+    // }
 }

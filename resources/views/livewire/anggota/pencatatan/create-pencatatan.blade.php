@@ -41,7 +41,7 @@
             <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true" wire:ignore.self>
                 <div class="modal-dialog" role="document">
-                    <form autocomplete="off" wire:submit="makePencatatan">
+                    <form autocomplete="off" wire:submit.prevent="makePencatatan">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -51,23 +51,23 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-
+                              <form>
                                 <div class="form-group">
-                                    <label for="initial_meter">Meteran Terbaru</label>
-                                    <input type="text" wire:model.defer="state.initial_meter"
-                                        class="form-control @error('initial_meter') is-invalid @enderror"
-                                        id="initial_meter" placeholder="Masukkan Meteran Terbaru">
-                                    @error('Initial_meter')
+                                    <label for="updated_meter">Meteran Terbaru</label>
+                                    <input type="text" wire:model.defer="state.updated_meter"
+                                        class="form-control @error('updated_meter') is-invalid @enderror"
+                                        id="updated_meter" placeholder="Masukkan Meteran Terbaru">
+                                    @error('updated_meter')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="customFile">Foto Meteran Terbaru</label>
                                     <div class="custom-file">
-                                        <input wire:model="photo" type="file" class="custom-file-input"
+                                        <input wire:model="photo" accept="image/png, image/jpg" type="file" class="custom-file-input"
                                             id="customFile">
                                         <label class="custom-file-label" for="customFile">
                                             @if ($photo)
@@ -77,7 +77,8 @@
                                             @endif
                                         </label>
                                     </div>
-                                </div> --}}
+                                </div>
+                              </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
@@ -93,5 +94,4 @@
         </div>
     </div>
 </div>
-</div>
-</div>
+

@@ -55,7 +55,7 @@ return [
         'foto_meteran' => [
             'driver' => 'local',
             'root' => storage_path('app/public/foto_meteran'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/storage/foto_meteran',
             'visibility' => 'public',
         ],
 
@@ -74,7 +74,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('storage/foto_meteram') => storage_path('app/public'),
+        public_path('storage/foto_meteran') => storage_path('app/public/foto_meteran'),
     ],
 
 ];
