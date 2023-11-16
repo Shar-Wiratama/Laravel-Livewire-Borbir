@@ -30,22 +30,22 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth','admin']], function(){
-        Route::get('dashboard', AdminDashboardController::class)->name('dashboard');
+        Route::get('/admin/dashboard', AdminDashboardController::class)->name('admin.dashboard');
 
-        Route::get('users', ListUsers::class)->name('users');
+        Route::get('users', ListUsers::class)->name('admin.users');
 
-        Route::get('pencatatan', SelectPencatatan::class)->name('pencatatan');
+        Route::get('pencatatan', SelectPencatatan::class)->name('admin.pencatatan');
 
-        Route::get('pengumuman', ListPengumuman::class)->name('pengumuman');
-        Route::get('pengumuman/create', CreatePengumumanForm::class)->name('pengumuman.create');
-        Route::get('pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('pengumuman.edit');
+        Route::get('pengumuman', ListPengumuman::class)->name('admin.pengumuman');
+        Route::get('pengumuman/create', CreatePengumumanForm::class)->name('admin.pengumuman.create');
+        Route::get('pengumuman/{pengumuman}/edit', UpdatePengumumanForm::class)->name('admin.pengumuman.edit');
 
     
         // Route::get('anggotaDashboard', AnggotaDashboardController::class)->name('anggotaDashboard');
 
-        Route::get('pengumuman/view', ViewPengumuman::class)->name('pengumuman.view');
+        Route::get('pengumuman/view', ViewPengumuman::class)->name('anggota.pengumuman.view');
 
-        Route::get('pencatatan/create', CreatePencatatan::class)->name('pencatatan.create');
+        Route::get('pencatatan/create', CreatePencatatan::class)->name('anggota.pencatatan.create');
 });
 
 
@@ -56,6 +56,6 @@ Route::group(['middleware' => ['auth','admin']], function(){
 
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

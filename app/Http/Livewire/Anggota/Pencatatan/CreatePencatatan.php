@@ -29,7 +29,7 @@ class CreatePencatatan extends Component
     public function makePencatatan()
     {
         $validateData = Validator::make($this->state,[
-            'user_id'=>'required',
+            // 'user_id'=>'required',
             'updated_meter' =>'required', 
         ],
         )->validate();

@@ -19,7 +19,7 @@
       @foreach($pengumumans as $pengumuman)
         <div class="col-mb-5 md-5">
             <div class="card mx-auto">
-                <a href="" wire:click.prevent="showPengumumanModal({{$pengumuman->id}})" class="card-link">
+                <a href="" wire:click.prevent="$emit('showPengumumanModal',{{$pengumuman->id}})" class="card-link">
                     <div class="card-body text-left">
                       <div class="col-md-12">
                         <h5 class="card-title">

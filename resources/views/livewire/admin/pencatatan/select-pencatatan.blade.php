@@ -4,7 +4,7 @@
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        {{-- <img src="{{ url('storage/app/public/foto_meteran') }}/{{ $pencatatans->photo }}" class="img-fluid"> --}}
+                        <img src="{{ url('../storage/foto_meteran') }}/{{ $pencatatan->photo }}" style="width: 75px; height: 75px;" class="img-square mr-1">
                         <div class="row mt-1">
                             <div class="col-md-12">
                                 <p>Nama: {{ $pencatatan->user->name??null }}</p>

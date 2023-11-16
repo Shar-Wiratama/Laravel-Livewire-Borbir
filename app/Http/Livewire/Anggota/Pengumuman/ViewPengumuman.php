@@ -19,7 +19,7 @@ class ViewPengumuman extends AdminComponent
 
         $this->dispatchBrowserEvent('show-pengumuman-modal');
 
-        $pengumuman = Pengumuman::findOrFail($this->showPengumumanId);
+        // $pengumuman = Pengumuman::findOrFail($this->showPengumumanId);
     }
     public function render()
     {
