@@ -18,8 +18,11 @@
           </a>
         </div>
       </div>
-
-      <!-- Sidebar Menu -->
+      
+      @if(Auth::user()->isAdmin())
+      <!---------------------------->
+      <!-- Sidebar Menu For Admin -->
+      <!---------------------------->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -33,18 +36,62 @@
             </a>
           </li>
 
-          {{-- <nav class="mt-2">
+          <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
                    <li class="nav-item">
-                <a href="{{route('anggotaDashboard')}}" class="nav-link {{request()->is('anggotaDashboard')?'active' : ''}}">
+                <a href="{{route('admin.pencatatan')}}" class="nav-link {{request()->is('admin/pencatatan')?'active' : ''}}">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>
+                    Pilih Pencatatan
+                  </p>
+                </a>
+              </li>
+
+              <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                       <li class="nav-item">
+                    <a href="{{route('admin.pengumuman')}}" class="nav-link {{request()->is('admin/pengumuman')?'active' : ''}}">
+                      <i class="nav-icon fas fa-file-alt"></i>
+                      <p>
+                        Pengumuman
+                      </p>
+                    </a>
+                  </li>
+
+                  <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                      <!-- Add icons to the links using the .nav-icon class
+                           with font-awesome or any other icon font library -->
+                           <li class="nav-item">
+                        <a href="{{route('admin.users')}}" class="nav-link {{request()->is('admin/users')?'active' : ''}}">
+                          <i class="nav-icon fas fa-user-alt"></i>
+                          <p>
+                            User
+                          </p>
+                        </a>
+                      </li>
+                      @endif
+
+                      @if(Auth::user()->isAnggota())
+      <!---------------------------->
+      <!--Sidebar Menu For Anggota-->
+      <!---------------------------->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+                   <li class="nav-item">
+                <a href="{{route('anggota.dashboard')}}" class="nav-link {{request()->is('anggota/dashboard')?'active' : ''}}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Anggota Dashboard
                   </p>
                 </a>
-              </li> --}}
+              </li>
 
            <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -64,32 +111,6 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-            <a href="{{route('admin.pencatatan')}}" class="nav-link {{request()->is('admin/pencatatan')?'active' : ''}}">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Pilih Pencatatan
-              </p>
-            </a>
-          </li>
-
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-            <a href="{{route('admin.pengumuman')}}" class="nav-link {{request()->is('admin/pengumuman')?'active' : ''}}">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Pengumuman
-              </p>
-            </a>
-          </li>
-
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
             <a href="{{route('anggota.pengumuman.view')}}" class="nav-link {{request()->is('anggota/pengumuman/view')?'active' : ''}}">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
@@ -97,19 +118,7 @@
               </p>
             </a>
           </li>
-
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-            <a href="{{route('admin.users')}}" class="nav-link {{request()->is('admin/users')?'active' : ''}}">
-              <i class="nav-icon fas fa-user-alt"></i>
-              <p>
-                User
-              </p>
-            </a>
-          </li>
+          @endif
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -131,6 +140,7 @@
               </a>
             </form>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

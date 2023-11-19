@@ -18,10 +18,9 @@ class Anggota
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            return redirect()->route('login');
-        }
-        if(Auth::user()->role_id == 2) {
-            return $next($request);
+            if (Auth()->check() && Auth()->User()->isAnggota()) {
+                return $next($request);
+            }
         }
 
         abort(403);

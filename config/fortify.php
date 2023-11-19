@@ -74,7 +74,8 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'admin_home' => RouteServiceProvider::ADMIN_HOME,
+    'anggota_home' => RouteServiceProvider::ANGGOTA_HOME,
 
     /*
     |--------------------------------------------------------------------------

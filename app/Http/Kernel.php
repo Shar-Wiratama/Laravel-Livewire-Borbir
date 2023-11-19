@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'user-role' => \App\Http\Middleware\UserRoleMiddleware::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'anggota' => \App\Http\Middleware\Anggota::class,
     ];
 
     // protected function schedule(Schedule $schedule)

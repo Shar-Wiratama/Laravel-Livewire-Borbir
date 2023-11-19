@@ -14,9 +14,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    // const ROLE_ADMIN = 'admin';
+    const ROLE_ADMIN = 'admin';
 
-    // const ROLE_ANGGOTA = 'anggota';
+    const ROLE_ANGGOTA = 'anggota';
 
 
     /**
@@ -61,9 +61,28 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
+        if ($this->role != self::ROLE_ADMIN) {
+            return false;
+        }
+
         return true;
     } 
 
+    public function isAnggota(){
+        if ($this->role != self::ROLE_ANGGOTA) {
+            return false;
+        }
+
+        return true;
+    } 
+
+    // public function getRedirectRoute()
+    // {
+    //     return match($this->role) {
+    //         'admin' => 'admin.dashboard',
+    //         'anggota' => 'anggota.dashboard',
+    //     };
+    // }
     // protected function type(): Attribute
     // {
     //     return new Attribute(
