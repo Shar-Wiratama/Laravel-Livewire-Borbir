@@ -52,9 +52,17 @@
                             </div>
                             <div class="modal-body">
                               <form>
+                                
+                                    <input type="text" wire:model="user_id" hidden
+                                        class="form-control @error('user_id') is-invalid @enderror"
+                                        id="user_id" placeholder="Masukkan Nama Terbaru">
+  
+                                    
+                               
+
                                 <div class="form-group">
                                     <label for="updated_meter">Meteran Terbaru</label>
-                                    <input type="text" wire:model.defer="state.updated_meter"
+                                    <input type="text" wire:model="updated_meter"
                                         class="form-control @error('updated_meter') is-invalid @enderror"
                                         id="updated_meter" placeholder="Masukkan Meteran Terbaru">
                                     @error('updated_meter')

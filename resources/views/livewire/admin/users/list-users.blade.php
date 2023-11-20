@@ -54,7 +54,7 @@
                         <td>{{ $user->name}}</td>
                         <td>{{ $user->address}}</td>
                         <td>{{ $user->email}}</td>
-                        <td>Anggota</td>
+                        <td>{{ $user->role }}</td>
                         <td>{{ $user->created_at}}</td>
                         <td>
                         <a href="" wire:click.prevent="edit({{$user}})">

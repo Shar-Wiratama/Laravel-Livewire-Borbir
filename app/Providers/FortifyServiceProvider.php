@@ -33,6 +33,18 @@ class FortifyServiceProvider extends ServiceProvider
                 return view('auth.login');
             }
         );
+        // Fortify::LoginViewResponse(function($request){
+        //     $user = $request->user();
+
+        //     if($user->isAdmin()){
+        //         return redirect('/admin/dashboard');
+        //     } elseif ($user->isAnggota()) {
+        //          return redirect('/anggota/dashboard');
+        //     } else {
+        //         return redirect('/');
+        //     }
+        // });
+
         Fortify::requestPasswordResetLinkView(function () {
             return view('auth.forgot-password');
         });

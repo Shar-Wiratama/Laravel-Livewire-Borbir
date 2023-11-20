@@ -19,6 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const ADMIN_HOME = '/admin/dashboard';
     public const ANGGOTA_HOME = '/anggota/dashboard';
+    public const LOGIN = '/login';
 
     /**
      * The controller namespace for the application.

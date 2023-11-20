@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,7 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/auth/login');
+    if (Auth::check() && Auth::user()->isAdmin()) {
+        return redirect('admin/dashboard');
+    }
+    elseif (Auth::check() && Auth::user()->isAnggota()) {
+        return redirect('anggota/dashboard');
+    } else {
+        return redirect('login');
+    }
+});
+
+Route::get('/home', function(){
+    return redirect('login');
 });
 
 
