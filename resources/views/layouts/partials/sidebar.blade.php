@@ -93,6 +93,19 @@
                 </a>
               </li>
 
+              <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                       <li class="nav-item">
+                    <a href="{{route('anggota.pengumuman.view')}}" class="nav-link {{request()->is('anggota/pengumuman/view')?'active' : ''}}">
+                      <i class="nav-icon fas fa-file-alt"></i>
+                      <p>
+                        List Pengumuman
+                      </p>
+                    </a>
+                  </li>
+
            <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -106,18 +119,6 @@
             </a>
           </li>
 
-          <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-            <a href="{{route('anggota.pengumuman.view')}}" class="nav-link {{request()->is('anggota/pengumuman/view')?'active' : ''}}">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                List Pengumuman
-              </p>
-            </a>
-          </li>
           @endif
 
           <li class="nav-item">

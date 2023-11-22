@@ -142,12 +142,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
   // Function to set selected data in the modal
   // function setModalData(selectedData) {
-  //       $('#pengumumanBody').html('<p>' + selectedData + '</p>');
+  //       $('#pengumumanBody').html('<p>' + selectedData + '</p>'); wire:
   //   }
 
-  window.addEventListener('show-pengumuman-modal', event => {
-    $('#confirmationModal').modal('show');
+  window.addEventListener('show-pengumuman-modal', (pengumumanId) => {
+    // console.log(pengumumanId.detail)
+    $('#confirmationModal' + pengumumanId.detail).modal('show');
   })
+
+  // window.addEventListener('DOMContentLoaded', function () {
+  //       Livewire.on('show-pengumuman-modal', (Id) => {
+  //           window.dispatchEvent(new CustomEvent('show-pengumuman-modal', { detail: Id }));
+  //       });
+  //   });
 </script>
 
 <livewire:scripts />

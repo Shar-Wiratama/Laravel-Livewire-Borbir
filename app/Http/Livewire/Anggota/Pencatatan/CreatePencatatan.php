@@ -8,12 +8,13 @@ use App\Models\Pencatatan;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\http\Livewire\Admin\AdminComponent;
 
-class CreatePencatatan extends Component
+class CreatePencatatan extends AdminComponent
 {
     use WithFileUploads;
 
-    public $state = [];
+    // public $state = [];
 
     public $pencatatan;
 
@@ -56,6 +57,8 @@ class CreatePencatatan extends Component
     }
     public function render()
     {
-        return view('livewire.anggota.pencatatan.create-pencatatan');
+        $pencatatans = Pencatatan::with('user')->latest()->paginate(8);
+
+        return view('livewire.anggota.pencatatan.create-pencatatan',['pencatatans'=>$pencatatans]);
     }
 }

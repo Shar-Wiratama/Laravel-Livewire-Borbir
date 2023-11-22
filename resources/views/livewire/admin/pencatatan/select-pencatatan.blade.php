@@ -10,16 +10,17 @@
                                 <p>Nama: {{ $pencatatan->user->name??null }}</p>
                                 <p>Alamat:{{ $pencatatan->user->address??null}}</p>
                                 <p>Meteran Terbaru: {{ $pencatatan->updated_meter }}</p>
+                                <p>Dibuat pada: {{ $pencatatan->created_at }}</p>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <a href="" class="btn btn-primary btn-block"><i class="fas fa-eye"></i> Terima</a>
+                                <a href="" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Terima</a>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <a href="" class="btn btn-danger btn-block"><i class="fas fa-eye"></i> Tolak</a>
+                                <a href="" class="btn btn-danger btn-block"><i class="fas fa-times"></i> Tolak</a>
                             </div>
                         </div>
                     </div>

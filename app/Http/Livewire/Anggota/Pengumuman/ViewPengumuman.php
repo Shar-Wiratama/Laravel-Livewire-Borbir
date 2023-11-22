@@ -8,18 +8,34 @@ use App\http\Livewire\Admin\AdminComponent;
 
 class ViewPengumuman extends AdminComponent
 {
-    public $showPengumumanId = null;
+    public $pengumumanId = null;
 
     public $pengumuman;
 
+    // public $modalPengumumanId;
+
+    // public function showPengumumanModal($id)
+    // {
+    //     $this->modalPengumumanId = $id;
+    //     $this->dispatchBrowserEvent('show-pengumuman-modal');
+    // }
+
+    // public function hideModal()
+    // {
+    //     $this->modalPengumumanId = null;
+    //     $this->dispatchBrowserEvent('hide-pengumuman-modal');
+    // }
+
+
     public function showPengumumanModal($pengumumanId)
     {
+        
+        $this->pengumumanId = $pengumumanId;
         // dd($pengumumanId);
-        $this->showPengumumanId = $pengumumanId;
-
-        $this->dispatchBrowserEvent('show-pengumuman-modal');
-
-        // $pengumuman = Pengumuman::findOrFail($this->showPengumumanId);
+        
+        $this->dispatchBrowserEvent('show-pengumuman-modal', $pengumumanId);
+        
+        //  dd($pengumumanId);
     }
     public function render()
     {

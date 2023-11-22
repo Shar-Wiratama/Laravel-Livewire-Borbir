@@ -31,11 +31,52 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                              <table class="table table-hover">
+                                  <thead>
+                                  <tr>
+                                      <th scope="col">No</th>
+                                      <th scope="col">Meteran Awal</th>
+                                      <th scope="col">Dibuat Tanggal</th>
+                                      <th scope="col">Opsi</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+              
+                                  @foreach($pencatatans as $pencatatan)
+                                  @if(Auth::user()->id)
+                                  <tr>
+                                      <th scope="row">{{$loop->iteration}}</th>
+                                      <td>{{$pencatatan->updated_meter}}</td>
+                                      <td>{{$pencatatan->tanggal_buat}}</td>
+                                      {{-- <td>
+                                      <a href="{{ route('admin.pengumuman.edit', $pengumuman) }}">
+                                          <i class="fa fa-edit"></i>
+                                      </a>
+                                      <a href="" wire:click.prevent="confirmPengumumanRemoval({{ $pengumuman->id }})">
+                                          <i class="fa fa-trash text-danger"></i>
+                                      </a>
+                                      </td> --}}
+                                  </tr>
+                                  @endif
+                                  @endforeach
+                                  </tbody>
+                              </table>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">   
+                              {{ $pencatatans->links() }}
+                            </div>
+                          </div>  
+
                         <!-- /.col-md-6 -->
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
+
+
 
             <!-- Modal -->
             <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
