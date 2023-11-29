@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Pengumuman;
 use App\Models\Pengumuman;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 
 class CreatePengumumanForm extends Component
 {   
@@ -24,6 +25,10 @@ class CreatePengumumanForm extends Component
         // $this->dispatch('alert', ['message'=>'Pengumuman Berhasil Dibuat!']);
 
         return redirect()->route('admin.pengumuman');
+    }
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
     }
 
     public function render()

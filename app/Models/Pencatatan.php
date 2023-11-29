@@ -18,6 +18,8 @@ class Pencatatan extends Model
         'usage_meter',
         'price',
         'photo',
+        'status',
+        'tanggal_buat'
     ];
 
     public function user(){

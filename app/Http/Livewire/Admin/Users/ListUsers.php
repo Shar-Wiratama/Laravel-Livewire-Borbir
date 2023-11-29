@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\http\Livewire\Admin\AdminComponent;
@@ -95,13 +96,18 @@ class ListUsers extends AdminComponent
         $this->dispatchBrowserEvent('hide-delete-modal', ['message'=>'Data User Berhasil Dhapus!']);
     }
 
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+    }
+
     public function render()
     {
         $users = User::query()
                 ->where('name', 'like', '%'.$this->searchTerm.'%')
                 ->orWhere('email', 'like', '%'.$this->searchTerm.'%')
                 ->orWhere('address', 'like', '%'.$this->searchTerm.'%')
-                ->latest()->paginate(3);
+                ->latest()->paginate(10);
 
         return view('livewire.admin.users.list-users',['users'=>$users]);
     }

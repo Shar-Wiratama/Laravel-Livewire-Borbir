@@ -139,22 +139,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   })
 </script>
 
-<script>
-  // Function to set selected data in the modal
-  // function setModalData(selectedData) {
-  //       $('#pengumumanBody').html('<p>' + selectedData + '</p>'); wire:
-  //   }
+{{-- <script>
+  $(document).ready(function(){
+    toastr.options= {
+      "positionClass": "toast-bottom-right",
+      "progressBar": true,
+    }
 
+    window.addEventListener('show-exist-pencatatan', event => {
+    $('#form').modal('hide');
+    toastr.success(event.detail.message, 'Berhasil!');
+  })
+  })
+</script> --}}
+
+<script>
   window.addEventListener('show-pengumuman-modal', (pengumumanId) => {
-    // console.log(pengumumanId.detail)
     $('#confirmationModal' + pengumumanId.detail).modal('show');
   })
-
-  // window.addEventListener('DOMContentLoaded', function () {
-  //       Livewire.on('show-pengumuman-modal', (Id) => {
-  //           window.dispatchEvent(new CustomEvent('show-pengumuman-modal', { detail: Id }));
-  //       });
-  //   });
 </script>
 
 <livewire:scripts />

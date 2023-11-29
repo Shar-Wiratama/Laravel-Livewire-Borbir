@@ -27,12 +27,12 @@
                             </h5>
                         </div>
                         <p class="card-text text-right">
-                            {{ $pengumuman->created_at->format('h:m d-m-y') }}
+                            {{ $pengumuman->created_at }}
                         </p>
                 </a>
             </div>
         </div>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="confirmationModal{{ $pengumuman->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>

@@ -32,6 +32,7 @@
                             </div>
                         </div>
 
+                        @if(!empty($pencatatans))
                         <div class="card">
                             <div class="card-body">
                               <table class="table table-hover">
@@ -40,27 +41,19 @@
                                       <th scope="col">No</th>
                                       <th scope="col">Meteran Awal</th>
                                       <th scope="col">Dibuat Tanggal</th>
-                                      <th scope="col">Opsi</th>
+                                      <th scope="col">Status</th>
+                                      <th scope="col">Invoice</th>
                                   </tr>
                                   </thead>
                                   <tbody>
               
                                   @foreach($pencatatans as $pencatatan)
-                                  @if(Auth::user()->id)
                                   <tr>
                                       <th scope="row">{{$loop->iteration}}</th>
                                       <td>{{$pencatatan->updated_meter}}</td>
                                       <td>{{$pencatatan->tanggal_buat}}</td>
-                                      {{-- <td>
-                                      <a href="{{ route('admin.pengumuman.edit', $pengumuman) }}">
-                                          <i class="fa fa-edit"></i>
-                                      </a>
-                                      <a href="" wire:click.prevent="confirmPengumumanRemoval({{ $pengumuman->id }})">
-                                          <i class="fa fa-trash text-danger"></i>
-                                      </a>
-                                      </td> --}}
+                                      <td>{{$pencatatan->status}}</td>
                                   </tr>
-                                  @endif
                                   @endforeach
                                   </tbody>
                               </table>
@@ -69,6 +62,9 @@
                               {{ $pencatatans->links() }}
                             </div>
                           </div>  
+                        @else
+                            <p>No data available</p>
+                        @endif
 
                         <!-- /.col-md-6 -->
                     </div>
@@ -102,7 +98,7 @@
                                
 
                                 <div class="form-group">
-                                    <label for="updated_meter">Meteran Terbaru</label>
+                                    <label for="updated_meter">Meteran Terbaru </label>
                                     <input type="text" wire:model="updated_meter"
                                         class="form-control @error('updated_meter') is-invalid @enderror"
                                         id="updated_meter" placeholder="Masukkan Meteran Terbaru">
@@ -127,6 +123,13 @@
                                         </label>
                                     </div>
                                 </div>
+
+                                
+                                    <input type="date" wire:model="tanggal_buat" hidden
+                                        class="form-control @error('tanggal_buat') is-invalid @enderror"
+                                        id="tanggal_buat" placeholder="Masukkan Tanggal Terbaru">
+                                    
+
                               </form>
                             </div>
                             <div class="modal-footer">

@@ -5,12 +5,15 @@ namespace App\Http\Livewire\Anggota\Pengumuman;
 use Livewire\Component;
 use App\Models\Pengumuman;
 use App\http\Livewire\Admin\AdminComponent;
+use Illuminate\Support\Carbon;
 
 class ViewPengumuman extends AdminComponent
 {
     public $pengumumanId = null;
 
     public $pengumuman;
+
+    public $formattedDate;
 
     // public $modalPengumumanId;
 
