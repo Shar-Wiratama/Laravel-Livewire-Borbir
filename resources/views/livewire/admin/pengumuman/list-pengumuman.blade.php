@@ -33,6 +33,9 @@
 
             <div class="card">
               <div class="card-body">
+                @if($pengumumans->isEmpty())
+                  <p>No data available.</p>
+                @else
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -63,6 +66,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                @endif
               </div>
               <div class="card-footer d-flex justify-content-end">   
                 {{ $pengumumans->links() }}

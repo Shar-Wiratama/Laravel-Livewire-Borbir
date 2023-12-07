@@ -16,13 +16,20 @@ class Pencatatan extends Model
         'user_id',
         'updated_meter',
         'usage_meter',
-        'price',
+        'initial_price',
+        'fine',
+        'total_price',
         'photo',
         'status',
-        'tanggal_buat'
+        'tanggal_buat',
     ];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'payment_id', 'id');
     }
 }

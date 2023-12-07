@@ -32,9 +32,12 @@
                             </div>
                         </div>
 
-                        @if(!empty($pencatatans))
+                      
                         <div class="card">
                             <div class="card-body">
+                                @if($pencatatans->isEmpty())
+                                    <p>No data available.</p>
+                                @else
                               <table class="table table-hover">
                                   <thead>
                                   <tr>
@@ -57,14 +60,13 @@
                                   @endforeach
                                   </tbody>
                               </table>
+                              @endif
                             </div>
                             <div class="card-footer d-flex justify-content-end">   
                               {{ $pencatatans->links() }}
                             </div>
                           </div>  
-                        @else
-                            <p>No data available</p>
-                        @endif
+                       
 
                         <!-- /.col-md-6 -->
                     </div>

@@ -34,6 +34,9 @@
 
             <div class="card">
               <div class="card-body">
+                @if($users->isEmpty())
+                  <p>No data available.</p>
+                @else
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -73,6 +76,7 @@
 
                     </tbody>
                 </table>
+                @endif
               </div>
               <div class="card-footer d-flex justify-content-end">
                 {{ $users->links()}}

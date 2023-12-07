@@ -4,13 +4,14 @@
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="{{ url('../storage/foto_meteran') }}/{{ $pencatatan->photo }}" style="width: 75px; height: 75px;" class="img-square mr-1">
+                        <img src="{{ url('../storage/foto_meteran') }}/{{ $pencatatan->photo }}" style="width: 120px; height: 120px;" class="img-square mr-1">
                         <div class="row mt-1">
                             <div class="col-md-12">
-                                <p>Nama: {{ $pencatatan->user->name }}</p>
-                                <p>Alamat:{{ $pencatatan->user->address}}</p>
-                                <p>Meteran Terbaru: {{ $pencatatan->updated_meter }}</p>
-                                <p>Dibuat pada: {{ $pencatatan->tanggal_buat }}</p>
+                                <p style="margin: 0px">Nama: {{ $pencatatan->user->name }}</p>
+                                <p style="margin: 0px">Alamat:{{ $pencatatan->user->address}}</p>
+                                <p style="margin: 0px">Meteran Bulan Lalu: {{$pencatatan->user->initial_meter}}</p>
+                                <p style="margin: 0px">Meteran Bulan Ini: {{ $pencatatan->updated_meter }}</p>
+                                <p style="margin: 0px">Dibuat pada: {{ $pencatatan->tanggal_buat }}</p>
                             </div>
                         </div>
                         @if ($pencatatan->status != 'accept' && $pencatatan->status != 'refuse')

@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invoice', function (Blueprint $table) {
-            $table->id();
-            
-            $table->timestamps();
+        Schema::table('pencatatan', function (Blueprint $table) {
+            $table->decimal('fine')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice');
+        Schema::table('pencatatan', function (Blueprint $table) {
+            //
+        });
     }
 };

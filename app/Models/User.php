@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany(Pencatatan::class, 'user_id', 'id');
     }
 
+    public function Payments()
+    {
+        return $this->hasMany(Payment::class, 'payment_id', 'id');
+    }
+
     public function isAdmin(){
         if ($this->role != self::ROLE_ADMIN) {
             return false;
