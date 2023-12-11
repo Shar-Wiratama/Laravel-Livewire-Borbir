@@ -79,7 +79,7 @@
       </div><!-- /.container-fluid -->
     </div>
 
-    <x-confirmation-alert />
+    {{-- <x-confirmation-alert /> --}}
 
 </div>
 </div>

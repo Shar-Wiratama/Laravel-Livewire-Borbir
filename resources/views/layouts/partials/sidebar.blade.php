@@ -122,15 +122,6 @@
           @endif
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Pengaturan
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
             <form method="POST" action="{{route('logout')}}">
             @csrf
               <a href="{{ route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">

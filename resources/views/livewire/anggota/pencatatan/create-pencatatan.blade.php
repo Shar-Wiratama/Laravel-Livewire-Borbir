@@ -22,7 +22,6 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
                         <div class="col-lg-12">
                             <div class="d-flex justify-content-center mb-3">
                                 <button type="button" wire:click.prevent="addPencatatan" class="btn btn-primary"><i
@@ -34,7 +33,8 @@
 
                       
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card card-primary card-outline">
+                            <div class="card-header">
                                 @if($pencatatans->isEmpty())
                                     <p>No data available.</p>
                                 @else
@@ -49,19 +49,34 @@
                                   </tr>
                                   </thead>
                                   <tbody>
-              
+                            </div>
+                            <div class="card-body">
                                   @foreach($pencatatans as $pencatatan)
                                   <tr>
                                       <th scope="row">{{$loop->iteration}}</th>
                                       <td>{{$pencatatan->updated_meter}}</td>
                                       <td>{{$pencatatan->tanggal_buat}}</td>
                                       <td>{{$pencatatan->status}}</td>
+                                      @if($pencatatan->status == 'Diterima')
+                                      <td>
+                                        <a href="{{ url('../storage/invoice_meteran')}}/invoice{{$pencatatan->id}}.pdf" class="btn btn-success">
+                                            Lihat Invoice
+                                        </a>
+                                      </td>
+                                      @elseif($pencatatan->status == 'Ditolak')
+                                      <td>
+                                      <p>
+                                        Kosong
+                                      </p>
+                                    </td>
+                                    @endif
                                   </tr>
                                   @endforeach
                                   </tbody>
                               </table>
                               @endif
                             </div>
+                           
                             <div class="card-footer d-flex justify-content-end">   
                               {{ $pencatatans->links() }}
                             </div>
