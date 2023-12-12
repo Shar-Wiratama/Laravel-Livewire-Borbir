@@ -33,3 +33,41 @@
         
     <!-- /.content -->
     </div>
+
+    
+    <div class="content">
+      <div class="container-fluid">
+            <div class="card card-primary card-outline">
+<div>
+<canvas id="myChart" width="50" height="50"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+      const ctx = document.getElementById('myChart');
+    
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: @json($labels),
+          datasets: [{
+            label: 'Penggunaan Air Total Setiap Bulan',
+            data: @json($data),
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+</div>
+</div>
+</div>

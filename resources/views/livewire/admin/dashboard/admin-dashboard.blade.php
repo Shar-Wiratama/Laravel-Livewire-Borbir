@@ -30,43 +30,55 @@
             </div><!-- /.card -->
           </div>  
           </div>
-          <!-- /.col-md-6 -->
-        {{-- </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-    </div> --}}
 
+          <div class="content">
+            <div class="container-fluid">
+                  <div class="card card-primary card-outline">
     <div>
-      <canvas id="AdminDashboardController" width="400" height="400"></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <script>
-        document.addEventListener('livewire:load', function () {
-            var ctx = document.getElementById('meterUsageChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: @json($labels),
-                    datasets: [{
-                        label: 'Meter Usage per Month',
-                        data: @json($data),
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+      <canvas id="myChart"></canvas>
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+            const ctx = document.getElementById('myChart');
+          
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: @json($labels),
+                datasets: [{
+                  label: 'Penggunaan Air Total Setiap Bulan',
+                  data: @json($data),
+                  backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+          ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+      </div>
+    </div>
+  </div>
 
-    <livewire:meter-usage-chart />
