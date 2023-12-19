@@ -21,7 +21,7 @@ class AnggotaDashboardController extends Component
           
          // Convert the data for chart rendering
          $this->labels = $monthlyData->map(function ($data) {
-            return date('M Y', strtotime("{$data->year->created_at}-{$data->month->created_at}-01"));
+            return date('M Y', strtotime("{$data->year}-{$data->month}-01"));
         })->toArray();
 
         $this->data = $monthlyData->pluck('total')->toArray();

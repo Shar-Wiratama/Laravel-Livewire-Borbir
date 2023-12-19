@@ -54,6 +54,19 @@
                   <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
                        <li class="nav-item">
+                    <a href="{{route('admin.pencatatan.view')}}" class="nav-link {{request()->is('admin/pencatatan/view')?'active' : ''}}">
+                      <i class="nav-icon fas fa-file-alt"></i>
+                      <p>
+                        Laporan Pencatatan
+                      </p>
+                    </a>
+                  </li>
+
+              <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                       <li class="nav-item">
                     <a href="{{route('admin.pengumuman')}}" class="nav-link {{request()->is('admin/pengumuman')?'active' : ''}}">
                       <i class="nav-icon fas fa-file-alt"></i>
                       <p>

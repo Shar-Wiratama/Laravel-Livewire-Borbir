@@ -69,6 +69,12 @@
                                         Kosong
                                       </p>
                                     </td>
+                                    @elseif($pencatatan->status == 'Menunggu')
+                                    <td>
+                                    <p>
+                                      Kosong
+                                    </p>
+                                  </td>
                                     @endif
                                   </tr>
                                   @endforeach

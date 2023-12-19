@@ -55,9 +55,9 @@
                         <td>{{$pengumuman->content}}</td>
                         <td>{{$pengumuman->created_at}}</td>
                         <td>
-                        {{-- <a href="{{ route('admin.pengumuman.edit', $pengumuman) }}">
+                        <a href="{{ route('admin.pengumuman.edit', $pengumuman) }}">
                             <i class="fa fa-edit"></i>
-                        </a> --}}
+                        </a>
                         <a href="" wire:click.prevent="confirmPengumumanRemoval({{ $pengumuman->id }})">
                             <i class="fa fa-trash text-danger"></i>
                         </a>

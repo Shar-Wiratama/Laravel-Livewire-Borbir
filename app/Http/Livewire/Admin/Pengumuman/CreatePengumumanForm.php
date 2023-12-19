@@ -24,7 +24,7 @@ class CreatePengumumanForm extends Component
 
         // $this->dispatch('alert', ['message'=>'Pengumuman Berhasil Dibuat!']);
 
-        return redirect()->route('admin.pengumuman');
+        return redirect()->route('admin.pengumuman.list-pengumuman');
     }
     public function getCreatedAtAttribute()
     {
