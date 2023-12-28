@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pencatatan', function (Blueprint $table) {
-            $table->enum('status', ['Menunggu', 'Diterima', 'Ditolak']);
-            $table->dateTime('created_date')->nullable();
+            $table->enum('paying_status', ['Menunggu', 'Diterima', 'Ditolak']);
+            $table->string('paying_photo')->nullable();
         });
     }
 

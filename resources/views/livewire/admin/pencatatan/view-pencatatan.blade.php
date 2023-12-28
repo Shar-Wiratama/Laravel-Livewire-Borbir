@@ -55,10 +55,10 @@
                                       <td>{{$pencatatan->user->address}}</td>
                                       <td>{{$pencatatan->updated_meter}}</td>
                                       <td>{{$pencatatan->usage_meter}}</td>
-                                      <td>{{$pencatatan->initial_price}}</td>
-                                      <td>{{$pencatatan->fine}}</td>
-                                      <td>{{$pencatatan->total_price}}</td>
-                                      <td>{{$pencatatan->tanggal_buat}}</td>
+                                      <td>{{'Rp'. number_format($pencatatan->initial_price, 0, ',', '.').',00'}}</td>
+                                      <td>{{'Rp'. number_format($pencatatan->fine, 0, ',', '.').',00'}}</td>
+                                      <td>{{'Rp'. number_format($pencatatan->total_price, 0, ',', '.').',00'}}</td>
+                                      <td>{{\Carbon\Carbon::parse($pencatatan->created_date)->format('l, j F Y')}}</td>
                                       <td>{{$pencatatan->status}}</td>
                                       @if($pencatatan->status == 'Diterima')
                                       <td>

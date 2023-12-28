@@ -53,7 +53,7 @@
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$pengumuman->title}}</td>
                         <td>{{$pengumuman->content}}</td>
-                        <td>{{$pengumuman->created_at}}</td>
+                        <td>{{ \Carbon\Carbon::parse($pengumuman->created_at)->format('l, j F Y') }}</td>
                         <td>
                         <a href="{{ route('admin.pengumuman.edit', $pengumuman) }}">
                             <i class="fa fa-edit"></i>

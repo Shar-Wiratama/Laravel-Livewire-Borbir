@@ -58,7 +58,7 @@
                         <td>{{ $user->address}}</td>
                         <td>{{ $user->email}}</td>
                         <td>{{ $user->role }}</td>
-                        <td>{{ $user->created_at}}</td>
+                        <td>{{ \Carbon\Carbon::parse($user->created_at)->format('l, j F Y') }}</td>
                         <td>
                         <a href="" wire:click.prevent="edit({{$user}})">
                             <i class="fa fa-edit"></i>

@@ -21,7 +21,8 @@ class Pencatatan extends Model
         'total_price',
         'photo',
         'status',
-        'tanggal_buat',
+        'created_date',
+        'paying_status',
     ];
 
     public function user(){

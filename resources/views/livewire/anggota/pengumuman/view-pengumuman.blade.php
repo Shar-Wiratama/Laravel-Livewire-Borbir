@@ -27,7 +27,8 @@
                             </h5>
                         </div>
                         <p class="card-text text-right">
-                            {{ $pengumuman->created_at }}
+                            {{ \Carbon\Carbon::parse($pengumuman->created_at)->format('H:m') }}<br>
+                            {{ \Carbon\Carbon::parse($pengumuman->created_at)->format('l, j F Y') }}
                         </p>
                 </a>
             </div>
@@ -46,7 +47,8 @@
                             <h4>{{ $pengumuman->title }}</h4>
                         </div>
                         <div>
-                            <p>{{ $pengumuman->created_at->format('h:m d-m-y') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($pengumuman->created_at)->format('l, j F Y ') }}<br>
+                            {{ \Carbon\Carbon::parse($pengumuman->created_at)->format('H:m ') }}</p>
                         </div>
                         <div>
                             <p>{{ $pengumuman->content }}</p>

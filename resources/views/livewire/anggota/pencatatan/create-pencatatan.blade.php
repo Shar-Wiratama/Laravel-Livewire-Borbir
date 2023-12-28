@@ -42,9 +42,12 @@
                                   <thead>
                                   <tr>
                                       <th scope="col">No</th>
-                                      <th scope="col">Meteran Awal</th>
+                                      <th scope="col">Meteran Akhir</th>
+                                      <th scope="col">Penggunaan Air</th>
+                                      <th scope="col">Total Biaya</th>
                                       <th scope="col">Dibuat Tanggal</th>
                                       <th scope="col">Status</th>
+                                      <th scope="col">Status Pembayaran</th>
                                       <th scope="col">Invoice</th>
                                   </tr>
                                   </thead>
@@ -55,8 +58,11 @@
                                   <tr>
                                       <th scope="row">{{$loop->iteration}}</th>
                                       <td>{{$pencatatan->updated_meter}}</td>
-                                      <td>{{$pencatatan->tanggal_buat}}</td>
+                                      <td>{{$pencatatan->usage_meter}}</td>
+                                      <td>{{'Rp'. number_format($pencatatan->total_price, 0, ',', '.').',00'}}</td>
+                                      <td>{{\Carbon\Carbon::parse($pencatatan->created_date)->format('l, j F Y')}}</td>
                                       <td>{{$pencatatan->status}}</td>
+                                      <td>{{$pencatatan->paying_status}}
                                       @if($pencatatan->status == 'Diterima')
                                       <td>
                                         <a href="{{ url('../storage/invoice_meteran')}}/invoice{{$pencatatan->id}}.pdf" class="btn btn-success">
@@ -139,6 +145,7 @@
                                             id="customFile">
                                         <label class="custom-file-label" for="customFile">
                                             @if ($photo)
+                                            <img src="{{ $photo->temporaryUrl() }}" alt="Preview" style="max-width: 100%; margin-top: 10px;">
                                                 {{ $photo->getClientOriginalName() }}
                                             @else
                                                 Pilih Gambar
@@ -148,9 +155,9 @@
                                 </div>
 
                                 
-                                    <input type="date" wire:model="tanggal_buat" hidden
-                                        class="form-control @error('tanggal_buat') is-invalid @enderror"
-                                        id="tanggal_buat" placeholder="Masukkan Tanggal Terbaru">
+                                    <input type="date" wire:model="created_at" hidden
+                                        class="form-control @error('created_at') is-invalid @enderror"
+                                        id="created_at" placeholder="Masukkan Tanggal Terbaru">
                                     
 
                               </form>
@@ -170,3 +177,29 @@
     </div>
 </div>
 
+
+
+
+@section('scripts')
+    <script>
+        document.addEventListener('livewire:load', function () {
+            Livewire.hook('message.processed', (message, component) => {
+                if (message.updateQueue && message.updateQueue.photo) {
+                    const photoInput = document.querySelector('[wire\\:model="photo"]');
+                    const previewImage = document.querySelector('img[alt="Preview"]');
+
+                    if (photoInput && previewImage) {
+                        const file = photoInput.files[0];
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            previewImage.src = e.target.result;
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+        });
+    </script>
+@endsection

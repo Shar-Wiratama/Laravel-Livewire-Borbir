@@ -23,8 +23,8 @@ class SelectPencatatan extends AdminComponent
             $initialPrice = $usageMeter * 4000;
             $price =  $initialPrice + 10000;
 
-            $tanggal_buat = Carbon::parse($pencatatans->tanggal_buat);
-            if ($tanggal_buat->day > 5) {
+            $created_date = Carbon::parse($pencatatans->created_date);
+            if ($created_date->day > 5) {
                 $fine = 5000;
                 $price += $fine;
             } else {
@@ -38,6 +38,7 @@ class SelectPencatatan extends AdminComponent
                 'fine' => $fine,
                 'total_price' => $price,
                 'status' => 'Diterima',
+                'report_date' => Carbon::now(),
             ]);
 
             if ($users) {
@@ -65,6 +66,14 @@ class SelectPencatatan extends AdminComponent
             $pencatatans->update(['status' => 'Ditolak']);
 
             $pencatatans->delete();
+        }
+    }
+
+    public function acceptPayment($pencatatanId){
+        $pencatatans = Pencatatan::findOrFail($pencatatanId);
+
+        if ($pencatatans && $pencatatans->paying_status !== 'Lunas') {
+            $pencatatans->update(['paying_status' => 'Lunas']);
         }
     }
 

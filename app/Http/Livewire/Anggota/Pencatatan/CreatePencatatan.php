@@ -21,13 +21,13 @@ class CreatePencatatan extends AdminComponent
     public $photo;
     public $user_id;
     public $updated_meter;
-    public $tanggal_buat;
+    public $created_date;
     public $fine_amount = 5000;
 
     protected $rules = [
         'user_id' => 'required',
         'updated_meter' => 'required',
-        'tanggal_buat' => 'required',
+        'created_date' => 'required',
         // 'fine' => 'nullable|numeric',
     ];
 
@@ -42,10 +42,11 @@ class CreatePencatatan extends AdminComponent
     public function makePencatatan()
     {
         $this->user_id = Auth::user()->id; 
-        $this->tanggal_buat = Carbon::now()->format('Y-m-d');
+        $this->created_date = Carbon::now()->format('Y-m-d');
 
         // Check if the user has already uploaded this month
         $existingPencatatan = Pencatatan::where('user_id', $this->user_id)
+            ->whereYear('created_at', Carbon::now()->year)
             ->whereMonth('created_at', Carbon::now()->month)
             ->first();
 
@@ -77,6 +78,10 @@ class CreatePencatatan extends AdminComponent
                                 ->latest()
                                 ->paginate(8);
 
-        return view('livewire.anggota.pencatatan.create-pencatatan',['pencatatans'=>$pencatatans]);
+
+        return view('livewire.anggota.pencatatan.create-pencatatan',
+        [
+            'pencatatans'=>$pencatatans, 
+        ]);
     }
 }
